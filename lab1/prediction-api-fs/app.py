@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Flask, json, request, Response, jsonify
-
+from io import StringIO
 from resources import predictor
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ app.config["DEBUG"] = True
 def predict_perf():
     # receive the prediction request data as the message body
     content = request.get_json()
-    df = pd.read_json(json.dumps(content), orient='records')
+    df = pd.read_json(StringIO(json.dumps(content)), orient='records')
     resp = predictor.predict(df)
     return resp
 

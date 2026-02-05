@@ -1,4 +1,6 @@
 import json
+import os
+from io import StringIO
 
 import pandas as pd
 from flask import Flask, request
@@ -13,9 +15,12 @@ app.config["DEBUG"] = True
 def train_models():
     # the training input data in the message body as a JSON payload
     training_input = request.get_json()
-    df = pd.read_json(json.dumps(training_input), orient='records')
+    df = pd.read_json(StringIO(json.dumps(training_input)), orient='records')
     resp = model_trainer.train(df.values)
     return resp
 
 
-app.run(host='0.0.0.0', port=5000)
+# The code within this conditional block will only run the python file is executed as a
+# script. See https://realpython.com/if-name-main-python/
+if __name__ == '__main__':
+    app.run(port=int(os.environ.get("PORT", 5000)), host='0.0.0.0', debug=True)
