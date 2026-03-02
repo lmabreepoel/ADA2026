@@ -42,7 +42,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     put:
-      summary: Update a Palcce Record
+      summary: Update a Place Record
       tags:
         - place records
       operationId: resources.place.PlaceRecord.put
@@ -82,7 +82,7 @@ paths:
                 $ref: "#/components/schemas/Error"
 
     delete:
-      summary: Delete a Palcce Record
+      summary: Delete a Place Record
       tags:
         - place records
       operationId: resources.place.PlaceRecord.delete

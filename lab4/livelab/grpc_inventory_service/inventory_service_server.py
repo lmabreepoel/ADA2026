@@ -27,7 +27,7 @@ class InventoryService(inventory_service_pb2_grpc.InventoryServiceServicer):
     def GetProductQuantity(self, request, context):
         # request is ProductType message
         ptype = request.type
-        logging.info('GetProductQuantity Invoked', ptype)
+        logging.info("GetProductQuantity Invoked for Product Type: %s", ptype)
         for record in self.inventories:
             if ptype == record["name"]:
                 return inventory_service_pb2.Quantity(amount=record["amount"], metric=record["metric"])

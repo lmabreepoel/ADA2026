@@ -1,6 +1,5 @@
 import logging
 import os
-
 import connexion
 
 # do not remove these imports https://stackoverflow.com/questions/44941757/sqlalchemy-exc-operationalerror-sqlite3-operationalerror-no-such-table
