@@ -29,7 +29,7 @@ def delete_order(id: str):
 
 
 @app.post('/orders', operation_id="create_order",
-            description="Create an order record. An order has a unique id.")
+            description="Add an order. An order has a unique id.")
 def create_order(order: OrderModel):
     print(order)
     return orders.create(order)
@@ -52,4 +52,4 @@ mcp = FastApiMCP(
 )
 mcp.mount_http(app, mount_path="/mcp")
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=5000, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=5002, reload=True)

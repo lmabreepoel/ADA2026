@@ -16,15 +16,15 @@ def create_products(p_model: ProductModel):
     return products.create(p_model)
 
 
-@app.get('/products/{pname}', operation_id="check_product_inventory",
-         description="Get a product from the inventory. A product has a unique name.")
-def get_product(pname: str):
-    return product.read(pname)
+@app.get('/products/{type}', operation_id="check_product_inventory",
+         description="Get a product from the inventory. A product has a unique type.")
+def get_product(type: str):
+    return product.read(type)
 
-@app.put('/products/{pnmae}/quantity', operation_id="update_product_quantity_available",
-         description="Update the available quantity of a product by reducing the ordered quantity. A product has a unique name.")
-def update_product(pname: str, ordered_quantity: int):
-    return product.update(pname, ordered_quantity)
+@app.put('/products/{type}/quantity', operation_id="update_product_quantity_available",
+         description="Update the available quantity of a product by reducing the ordered quantity. A product has a unique type.")
+def update_product(type: str, ordered_quantity: int):
+    return product.update(type, ordered_quantity)
 
 
 # --- MCP Integration ---

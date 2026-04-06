@@ -6,42 +6,42 @@ from pdmodels.product_model import ProductModel
 
 inventories = [
     {
-        "name": "Laptop",
+        "type": "Laptop",
         "quantity": 1000
     },
     {
-        "name": "Phone",
+        "type": "Phone",
         "quantity": 5000
     }
 ]
 
 
 class Product:
-    def read(self, pname):
+    def read(self, type):
         for record in inventories:
-            if pname == record["name"]:
+            if type == record["type"]:
                 return JSONResponse(content=jsonable_encoder(record),
                                     status_code=status.HTTP_200_OK)
-        return JSONResponse(content=jsonable_encoder({'message': "There is no product with the name " + pname}),
+        return JSONResponse(content=jsonable_encoder({'message': "There is no product type " + type}),
                             status_code=status.HTTP_404_NOT_FOUND)
 
-    def update(self, pname, value):
+    def update(self, type, value):
         for record in inventories:
-            if pname == record["name"]:
+            if type == record["type"]:
                 record["quantity"] = record["quantity"] - value
                 return JSONResponse(content=jsonable_encoder(record),
                                     status_code=status.HTTP_200_OK)
-        return JSONResponse(content=jsonable_encoder({'message': "There is no product with the name " + pname}),
+        return JSONResponse(content=jsonable_encoder({'message': "There is no product type " + type}),
                             status_code=status.HTTP_404_NOT_FOUND)
 
 
 class Products:
     def create(self, p_model:ProductModel):
         record_to_be_created = p_model.model_dump(mode="json")
-        pname = p_model.name
+        type = p_model.type
         for record in inventories:
-            if pname == record["name"]:
-                return JSONResponse(content=jsonable_encoder({'message': "There is no product with the name " + pname}),
+            if type == record["type"]:
+                return JSONResponse(content=jsonable_encoder({'message': "There is no product type " + type}),
                                     status_code=status.HTTP_404_NOT_FOUND)
         inventories.append(record_to_be_created)
         return JSONResponse(content=jsonable_encoder(record_to_be_created),

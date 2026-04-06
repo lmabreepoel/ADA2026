@@ -6,17 +6,15 @@ from google.genai import types
 load_dotenv()
 tools = McpToolset(
     connection_params=StreamableHTTPConnectionParams(
-        url="http://localhost:5001/mcp", timeout=600.0
+        url="http://localhost:5000/mcp", timeout=600.0
     )
 )
 
-inventory_agent = LlmAgent(
-    name="InventoryServiceAgent",
+delivery_agent = LlmAgent(
+    name="DeliveryServiceAgent",
     model="gemini-2.5-flash-lite",
-    description="Agent that manage product inventories. ",
-    instruction="You are an inventory management expert specializing in filling the inventory by adding products,"
-                " checking product inventories, updating the available quantity or inventory level of products. "
-                "Use the correct tools to perform your tasks.",
+    description="Agent that manage order deliveries. ",
+    instruction="You are an order delivery management expert specializing in creating, retrieving, updating, and deleting delivery records in the given context.",
     generate_content_config=types.GenerateContentConfig(
         temperature=0.2,  # More deterministic output
         max_output_tokens=1000,
