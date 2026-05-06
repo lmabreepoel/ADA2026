@@ -5,8 +5,8 @@ steps:
     args:
       - '-c'
       - |
-        if [ -d "lab11/create_vm_cloud_build/" ]; then
-          cd lab11/create_vm_cloud_build
+        if [ -d "lab10/create_vm_cloud_build/" ]; then
+          cd lab10/create_vm_cloud_build
           terraform init -reconfigure -var project_id=YOUR_PROJECT_ID
         else
           echo "***************************** SKIPPING Init ********************************"
@@ -19,8 +19,8 @@ steps:
     args:
     - '-c'
     - | 
-        if [ -d "lab11/create_vm_cloud_build/" ]; then
-          cd lab11/create_vm_cloud_build
+        if [ -d "lab10/create_vm_cloud_build/" ]; then
+          cd lab10/create_vm_cloud_build
           terraform plan -var project_id=YOUR_PROJECT_ID
         else
           echo "***************************** SKIPPING Planing ********************************"
@@ -34,7 +34,7 @@ steps:
     - '-c'
     - | 
         if [ -d "lab11/create_vm_cloud_build/" ]; then
-          cd lab11/create_vm_cloud_build     
+          cd lab10/create_vm_cloud_build     
           terraform apply -auto-approve -var project_id=YOUR_PROJECT_ID
         else
           echo "***************************** SKIPPING APPLYING *******************************"
