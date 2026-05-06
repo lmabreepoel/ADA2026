@@ -7,7 +7,7 @@ resource "google_compute_network" "adavm_vpc_network" {
 resource "google_compute_subnetwork" "adavm_subnet" {
   name          = "my-custom-subnet"
   ip_cidr_range = "10.0.1.0/24"
-  region        = "us-west1"
+  region        = "us-central1"
   network       = google_compute_network.adavm_vpc_network.id
 }
 # Create a single Compute Engine instance
