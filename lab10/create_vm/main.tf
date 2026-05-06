@@ -14,7 +14,7 @@ resource "google_compute_subnetwork" "adavm_subnet" {
 resource "google_compute_instance" "adavm" {
   name         = "ada-vm"
   machine_type = "f1-micro"
-  zone         = "us-west1-a"
+  zone         = "us-central1-c"
   tags         = ["ssh"]
 
   boot_disk {
