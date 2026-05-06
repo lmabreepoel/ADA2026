@@ -1,6 +1,6 @@
 steps:
   - id: 'tf init'
-    name: 'hashicorp/terraform:1.0.0'
+    name: 'hashicorp/terraform:1.15.1'
     entrypoint: 'sh'
     args:
       - '-c'
@@ -14,7 +14,7 @@ steps:
           echo "*******************************************************************************"
         fi
   - id: 'tf plan'
-    name: 'hashicorp/terraform:1.0.0'
+    name: 'hashicorp/terraform:1.15.1'
     entrypoint: 'sh'
     args:
     - '-c'
@@ -28,12 +28,12 @@ steps:
           echo "*******************************************************************************"
         fi
   - id: 'tf apply'
-    name: 'hashicorp/terraform:1.0.0'
+    name: 'hashicorp/terraform:1.15.1'
     entrypoint: 'sh'
     args:
     - '-c'
     - | 
-        if [ -d "lab11/create_vm_cloud_build/" ]; then
+        if [ -d "lab10/create_vm_cloud_build/" ]; then
           cd lab10/create_vm_cloud_build     
           terraform apply -auto-approve -var project_id=YOUR_PROJECT_ID
         else
