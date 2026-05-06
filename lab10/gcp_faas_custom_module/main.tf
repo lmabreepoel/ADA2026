@@ -1,7 +1,7 @@
 provider "google" {
   project     = var.project_id
   region      = "us-central1"
-  zone        = "us-central1-c"
+  zone        = "us-central1-a"
 }
 
 module "zip-upload-gcs" {
@@ -13,10 +13,11 @@ module "zip-upload-gcs" {
   project_id = var.project_id
 }
 
+# see https://registry.terraform.io/modules/GoogleCloudPlatform/cloud-functions/google/latest
 module "cloud_functions2" {
   source  = "GoogleCloudPlatform/cloud-functions/google"
-  version = "~> 0.4"
-
+  version = "~> 0.9"
+  location = "us-central1"
   project_id        = var.project_id
   function_name     = "cal-http"
   function_location = var.function_location
