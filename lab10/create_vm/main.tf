@@ -13,7 +13,7 @@ resource "google_compute_subnetwork" "adavm_subnet" {
 # Create a single Compute Engine instance
 resource "google_compute_instance" "adavm" {
   name         = "ada-vm"
-  machine_type = "f1-micro"
+  machine_type = "e2-standard-2"
   zone         = "us-central1-a"
   tags         = ["ssh"]
 
